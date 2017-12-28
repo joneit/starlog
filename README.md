@@ -13,7 +13,7 @@ starlog.stop();
 ```
 
 #### Sample output
-If logging keyboard events for example, pressing a key between either of the above `logStart` and `logStop` pairs would log:
+If logging keyboard events for example, pressing a key between the `logStart()` and `logStop()` calls above would log:
 ```
 keydown
 keypress
@@ -137,6 +137,7 @@ var options = {
         keypress: document.querySelector('textarea')
     }
 };
+```
 
 #### `options.log`
 
