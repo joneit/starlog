@@ -1,0 +1,22 @@
+{
+  "name": "starlog",
+  "version": "1.0.0",
+  "description": "Flexible event logger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joneit/starlog.git"
+  },
+  "author": "Jonathan Eiten",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joneit/starlog/issues"
+  },
+  "homepage": "https://github.com/joneit/starlog#readme",
+  "dependencies": {
+    "code-match": "^1.0.0"
+  }
+}
