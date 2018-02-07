@@ -47,7 +47,7 @@ All options are optional as the name implies, with the exception that one of
 
 #### `options.loggers`
 
-Specify an object whose keys represent a complete list of event strings:
+Specify an object whose members' _keys_ represent a complete list of event strings:
 ```js
 var options = {
     loggers: {
@@ -57,7 +57,7 @@ var options = {
     }
 });
 ```
-The value of each key can be falsy or an object. The `listener` and `targets` properties are are subject to defaults
+Members' _values_ can be falsy or an object. The `listener` and `targets` properties of each `starlogger` object are subject to defaults
 (see [`options.listenerDictionary`](#optionslistenerdictionary), [`options.listener`](#optionslistener),
 [`options.targetsDictionary`](#optionstargetsdictionary), and [`options.targets`](#optionstargets)).
 
@@ -73,7 +73,7 @@ var options = {
     ]
 };
 ```
-This is transformed into a loggers object which is then subject to the same defaults.
+This is transformed into a `loggers` object which is then subject to the same defaults.
 
 #### `options.pattern` and `options.select`
 
@@ -91,7 +91,7 @@ var options = {
 This approach is limited to the _visible code_ in the getters, setters, and methods of the object(s) given in `options.select`.
 See [`code-match`](https://github.com/joneit/code-match) for more information.
 
-The resulting list of search hits is transformed into a loggers object which is then subject to the same defaults.
+The resulting list of search hits is transformed into a `loggers` object which is then subject to the same defaults.
 
 #### `options.listener`
 
@@ -108,7 +108,7 @@ To override the default logging listener for specific event strings:
 ```js
 var options = {
     events: ['keydown', 'keyup', 'keypress'],
-    listeners: {
+    listenerDictionary: {
         keypress: function(e) { exports.log('PRESSED!'); }
     }
 };
@@ -120,12 +120,16 @@ keyup
 
 #### `options.targets`
 
-To specify (a) default event target(s):
+Specify a default event target in `options.target`. For example:
 ```js
-options.targets = document.querySelector('textarea'); // may also be an array of targets
+options.targets = document.querySelector('textarea');
+```
+You can also specify an array(-like object) of targets:
+```js
+options.targets = document.querySelectorAll('textarea');
 ```
 
-Alternatively, reassign `Starlog.prototype.targets` directly, which would change the default for all subsequent instantiations.
+Alternatively, resetting `Starlog.prototype.targets` sets the default target(s) for all subsequent instantiations.
 
 #### `options.targetsDictionary`
 
@@ -133,7 +137,7 @@ To override the default event target(s) for specific event strings:
 ```js
 var options = {
     events: ['keydown', 'keyup', 'keypress'],
-    targets: {
+    targetsDictionary: {
         keypress: document.querySelector('textarea')
     }
 };
@@ -143,7 +147,7 @@ var options = {
 
 Define this option to override the default logging function, `console.log.bind(console)`, which performs the actual output.
 
-Alternatively, reassign `Starlog.prototype.log` directly, which would change the default for all subsequent instantiations.
+Alternatively, resetting `Starlog.prototype.log` sets the default logging function for all subsequent instantiations.
 
 #### `options.match`
 This object is a rich set of options that controls how `code-match` looks through objects,
